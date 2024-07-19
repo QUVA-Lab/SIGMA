@@ -2,19 +2,27 @@
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<style>
+  .content-wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: -10rem;
+    border-radius: 0px;
+  }
+</style>
+
 <head>
     <meta charset="utf-8">
     <!-- existing meta tags -->
     <!-- Google Analytics script goes here -->
     <!-- Google tag (gtag.js) -->
-    <script async src=""></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VQ4DE03DC3"></script>
     <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    gtag('config', '');
-    </script>
+      gtag('config', 'G-VQ4DE03DC3');
+  </script>
 </head>
 <html>
 <head>
@@ -66,17 +74,21 @@
 
   <section class="hero">
     <!-- <div class="hero-body" style="background-color: #bdbaba;"> -->
-        <!-- <div class="hero-body" style="background-image: url('static/images/background.avif'); background-size: cover; background-repeat: no-repeat; background-position: center center;"> -->
-            <div class="hero-body" style="background-image: url(static/images/background.avif);">
+        <div class="hero-body" style="background-image: url('static/images/sigma_pattern_high_dpi.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+            <!-- <div class="hero-body" style="background-image: url(static/images/sigma_pattern_high_dpi.jpg);"> -->
 
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">SIGMA: Sinkhorn-Guided Masked Video Modeling</h1>
+            <div class="content-wrapper">
+            <h1 class="title is-1 publication-title">SIGMA: Sinkhorn-Guided Masked 
+              <br>
+              Video Modeling</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
+              <b>
               <span class="author-block">
-                <a href="https://smsd75.github.io/" target="_blank">Mohammadreza Salehi*</a>,
+                <a href="https://smsd75.github.io/" target="_blank">Mohammadreza Salehi*</a>
               </span>
               <span class="author-block">
                 <a href="https://mdorkenwald.com/" target="_blank">Michael Dorkenwald*</a>,
@@ -94,13 +106,12 @@
               <span class="author-block">
                 <a href="https://yukimasano.github.io/" target="_blank">Yuki M. Asano</a>
               </span>
-            </div>
-
             <div class="is-size-5 publication-authors">
               <span class="author-block" style="color: red;">Accepted to ECCV'24</span><br>
-              
+           
             <span class="author-block">University of Amsterdam<br>
             <span style="font-size: small;">*equal contribution</span>
+          </b>
             </span>
             </div>
 
@@ -108,7 +119,7 @@
               <div class="publication-links">
                 <!-- Arxiv PDF link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/abs/2402.08657" target="_blank"
+                  <a href="h" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fas fa-file-pdf"></i>
@@ -141,7 +152,7 @@
 
                 <!-- Github link -->
                 <span class="link-block">
-                  <a href="https://github.com/QUVA-Lab/PIN/" target="_blank"
+                  <a href="https://github.com/QUVA-Lab/SIGMA/" target="_blank"
                   class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fab fa-github"></i>
@@ -171,6 +182,7 @@
                   <span>arXiv</span>
                   </a>
                 </span> -->
+              </div>
               </div>
             </div>
           </div>
@@ -209,14 +221,156 @@
             <p>
               Video-based pretraining offers immense potential for learning strong visual representations on an unprecedented scale. 
               Recently, masked video modeling methods have shown promising scalability, yet fall short in capturing higher-level semantics due to reconstructing predefined low-level targets such as pixels. 
-              To tackle this, we present Sinkhorn-guided Masked Video Modelling (\ours\!\!), a novel video pretraining method that jointly learns the video model in addition to a target feature space using a projection network. However, this simple modification means that the regular L2 reconstruction loss will lead to trivial solutions as both networks are jointly optimized. As a solution, we distribute features of space-time tubes evenly across a limited number of learnable clusters. By posing this as an optimal transport problem, we enforce high entropy in the generated features across the batch, infusing semantic and temporal meaning into the feature space. The resulting cluster assignments are used as targets for a symmetric prediction task where the video model predicts cluster assignment of the projection network and vice versa. 
-              Experimental results on ten datasets across three benchmarks validate the effectiveness of \ours in learning more performant, temporally-aware, and robust video representations improving upon state-of-the-art methods.
-          </div>
+              To tackle this, we present Sinkhorn-guided Masked Video Modelling (SIGMA), a novel video pretraining method that jointly learns the video model in addition to a target feature space using a projection network. However, this simple modification means that the regular L2 reconstruction loss will lead to trivial solutions as both networks are jointly optimized. As a solution, we distribute features of space-time tubes evenly across a limited number of learnable clusters. By posing this as an optimal transport problem, we enforce high entropy in the generated features across the batch, infusing semantic and temporal meaning into the feature space. The resulting cluster assignments are used as targets for a symmetric prediction task where the video model predicts cluster assignment of the projection network and vice versa. 
+              Experimental results on ten datasets across three benchmarks validate the effectiveness of SIGMA in learning more performant, temporally-aware, and robust video representations improving upon state-of-the-art methods.
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/fig1.png" alt="" style="width: 100%; max-width: 500px; padding-top: 10px;"/>
+                <p style="width: 100%; max-width: 600px; margin: auto;">
+                <i> 
+                  Compared to VideoMAE, which uses RGB pixels as targets, we generate Sinkhorn-regularised features as reconstruction targets. This obtains more semantic features and yields better pretraining performance.
+                </i>
+                </p>
+              </div>
+            </div>
         </div>
       </div>
     </div>
   </section>
   <!-- End paper abstract -->
+
+
+  <!-- Start second section -->
+  <section class="section hero">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Methodology </h2>
+          <div class="content has-text-justified">
+            <p>
+              In this work, we propose a new framework wherein the typically predefined reconstruction target space can be simultaneously learned alongside the video model. 
+              For this, a projection network is introduced which embeds both the visible and masked portions of the video, yielding deep feature reconstruction targets. However, employing a commonly used L2 reconstruction loss naïvely is ineffective due to the joint optimization of both networks leading to a trivial solution as both networks collapse to the same output irrespective of the input.
+              To solve this, we introduce SIGMA: Sinkhorn-guided masked video modeling, where deep features of space-time tubes are regularised by optimal transport uniformly across clusters.
+              This effectively acts as a high-entropy regularization constraint and enforces similar space-time tube features to be assigned to the same centroid, infusing semantic meaning into the feature space.
+              These cluster assignments and centroids are learned in an online manner using the fast Sinhkhorn-Knopp algorithm, yielding feature pseudo-labels as targets. 
+              With these targets, we formulate our loss objective as a symmetric prediction task, where the features from each branch -- the video model and the projection network -- cross-predict the cluster assignment of the other. By doing so, we force the features of space-time tubes to be expressed by a limited number of clusters, enforcing semantic-rich concepts, while eliminating the dependency on predefined targets such as the masked pixel values, commonly used in prior works. Moreover, despite our cross-prediction task, we do not rely on any augmentations or crops, making our model stable and easy to train.
+            </p>
+            <div class="columns is-centered has-text-centered" style="display: block;">
+              <img src="static/images/method.jpg" alt="SIGMA" style="width: 100%; max-width: 1000px; padding-top: 10px;"/>
+              <p style="width: 100%; max-width: 1000px; margin: auto;">
+                <i>Overview of our proposed method SIGMA. A given video is embedded with the projection network \(\varphi\) leading to features \(\mathbf{x}^{\varphi}\). The video model \(\Psi\) predicts feature embeddings \(\mathbf{x}^\Psi\) of the masked space-time tubes. Both embeddings are projected onto the learnable prototypes \( \mathbf{C}\) representing cluster centroids. Cluster assignments are created with an adapted Sinkhorn algorithm enforcing equipartition across all prototypes. These pseudo-labels are then used as targets for the predictive task \(\mathcal{L}_{CE}\) with which the networks are optimized.
+              </p>
+              &nbsp;
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End second section -->
+
+
+  <!-- Start first section -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Results</h2>
+          <div class="content has-text-justified">
+            <p>
+              We evaluate our method on a total of ten different datasets and across three common benchmark settings. In Benchmark I we first compare our approach against state-of-the-art video models in a linear probing (frozen backbone) and the standard full finetuning setting. Then, in Benchmark II we benchmark the semantic spatial and temporal understanding by reporting unsupervised semantic segmentation performance and visualizing the segmentation masks. In Benchmark III we evaluate our approach on the SEVERE benchmark specifically designed to analyze the generalization performance of video models.
+            </p> 
+            <br>
+            <div class="columns is-centered has-text-centered">
+              <br>
+            <h2 class="title is-4">Benchmark I</h2>
+          </div>
+            <div class="columns is-centered has-text-centered" style="display: block;">
+              <img src="static/images/linear.png" alt="SIGMA" style="width: 60%; max-width: 1000px; padding-top: 10px"/>
+              <p style="width: 70%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                  <i>
+                  <b>Frozen evaluation of masked video modeling methods.</b> A linear layer on top of the frozen ViT-B backbone is optimized. The ViT-B backbones are pretrained on Kinetics-400 (K400). SIGMA consistently outperforms previous masked video modeling works across all video and image datasets considerably.</i>
+              </p>
+            </div>
+            <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/ssv2.png" alt="SIGMA" style="width: 70%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 80%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                      <b>Comparison for full finetuning on Something-Something V2 (SSv2).</b> The top part compromises supervised methods while the remaining methods are pretrained in a self-supervised manner. The middle section evaluates models trained on Kinetics 400 (K400) data for pretraining whereas the bottom part mainly used SSv2 data. We compare against previous methods pretrained on the ViT-Base backbone for 800 epochs. A full table with all previous works using also different pretraining setups is provided in the supplemental. M. Guid. denotes motion guidance such as optical flow used e.g. reconstructing targets or masking. Our method achieves state-of-the-art performance on SSv2 w/ and w/o motion guidance.
+                
+                    </i>
+                </p>
+              </div>
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/kinetics.png" alt="SIGMA" style="width: 70%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 80%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                     <b>Comparison for full finetuning on Kinetics 400 (K400).</b> We compare against previous methods for pretraining the ViT-Base backbone for 800 epochs on K400 and subsequently, fully finetuning the backbone with the K400 labels. A full table with all previous methods using also different setups is provided in the supplemental. M. Guid. denotes motion guidance such as optical flow used e.g. reconstructing targets or masking. Our method achieves state-of-the-art performance on K400.
+                    </i>
+                </p>
+              </div>
+              <br>
+              <div class="columns is-centered has-text-centered">
+                <br>
+              <h2 class="title is-4">Benchmark II</h2>
+            </div>
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/segmentation2.jpg" alt="SIGMA" style="width: 70%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 80%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                      <b>Unsupervised video object segmentation results on DAVIS.</b> We visualize the abilities of masked video modeling methods to produce temporally consistent semantic segmentation masks. For that, K-means with K=6 is applied to the space-time features that are extracted from each input clip, resulting in assigning each tube feature to a certain cluster. Then, the extracted cluster maps are resized to match the input size and overlayed on the input. 
+                      Sigma provides more coherent and consistent object cluster maps compared to other methods. This shows that our learned features have better temporal and spatial understanding.</i>
+                </p>
+              </div>
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/segmentation.png" alt="SIGMA" style="width: 50%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 80%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                      <b>Unsupervised video object segmentation.</b> We follow the evaluation protocol from TimeTuning and report mIoU for clustering and overclustering. SIGMA consistently achieves better results compared to other methods across different backbones and datasets. This shows that our method learns better semantic and temporal consistent features. The clip-length is set to 16 and 4 for DAVIS and YTVOS, respectively. For clustering, the Hungarian algorithm matches the unsupervised segmentation clusters (K) with the ground truth (GT) per clip. For overclustering, we use K=10. The matching protocol is greedy many-to-one, see Supplemental for details.  
+                    </i>
+                </p>
+              </div>
+              <br>
+              <div class="columns is-centered has-text-centered">
+                <br>
+              <h2 class="title is-4">Benchmark III</h2>
+            </div>
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/severe.png" alt="SIGMA" style="width: 80%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 90%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                      <b>SEVERE Generalization. </b>We evaluate masked video modeling methods for generalizability in domain shift, sample efficiency, action granularity, and task shift. SIGMA achieves strong generalization performance outperforming prior works across all configurations. We use the original severe codebase to evaluate the publicly available models for all the methods.
+                    </i>
+                </p>
+              </div>
+              <br>
+              <div class="columns is-centered has-text-centered">
+                <br>
+              <h2 class="title is-4">Visualizations</h2>
+            </div>
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/prototypes.png" alt="SIGMA" style="width: 80%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 90%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                    <b>Visualization of prototypes.</b> We visualize the 25 space-time tubes with the highest similarity to a particular prototype inside a video. For simplicity, we visualize the first patch inside the space-time tube. We observe that different prototypes attend to particular semantic parts of the video, as prototype 1 corresponds to the blue parts of the car.</i>
+                </p>
+              </div>
+              <div class="columns is-centered has-text-centered" style="display: block;">
+                <img src="static/images/prototypes2.jpg" alt="SIGMA" style="width: 80%; max-width: 1000px; padding-top: 10px"/>
+                <p style="width: 90%; max-width: 1000px; margin: auto; padding-bottom: 30px;">
+                    <i>
+                      <b>Visualization of prototypes (2).</b> We visualize the 25 space-time tubes with the highest similarity to a particular prototype inside a video. For simplicity, we visualize the first patch inside the space-time tube. We observe that different prototypes attend to particular semantic parts of the video, for example, prototype 1 corresponds to the person(s) in white.</i>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End first section -->
 
   <section class="section" id="BibTeX" style="background-color: #fafafa;">
     <div class="container is-max-desktop content">

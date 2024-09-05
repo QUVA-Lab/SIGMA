@@ -1,7 +1,7 @@
 # SIGMA: Sinkhorn-Guided Masked Video Modeling
 
 [Project Page](https://quva-lab.github.io/SIGMA/)
-[ArXiv]()
+[ArXiv](https://arxiv.org/abs/2407.15447v1)
 
 
 This is the official code repository. For a paper summary, check out our [project page](https://quva-lab.github.io/SIGMA/)!

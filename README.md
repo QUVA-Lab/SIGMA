@@ -125,7 +125,7 @@ If you think this project is helpful, please feel free to leave a star⭐️ and
 
 ```
 
-@article{salehi2024sigma,
+@inproceedings{salehi2024sigma,
   title={SIGMA: Sinkhorn-Guided Masked Video Modeling},
   author={Salehi, Mohammadreza and Dorkenwald, Michael and Thoker, Fida Mohammad and Gavves, Efstratios and Snoek, Cees GM and Asano, Yuki M},
   journal={European Conference of Computer Vision},

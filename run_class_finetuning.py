@@ -189,6 +189,8 @@ def get_args():
     parser.add_argument('--enable_deepspeed', action='store_true', default=False)
     parser.add_argument('--examples', default=0, type=int)
     parser.add_argument('--finetuning_crops', default=True, type=bool)
+    # linear probing
+    parser.add_argument('--linear_probing', action='store_true', default=False)
 
     known_args, _ = parser.parse_known_args()
 
@@ -469,6 +471,16 @@ def main(args, ds_init):
         criterion = torch.nn.CrossEntropyLoss()
 
     print("criterion = %s" % str(criterion))
+
+    if args.linear_probing:
+        print('Warning! running linear probing!\nOnly train fc layer!')
+        param_require_grad = list()
+        for k,v in model.named_parameters():
+            if ('head' in k)  or ( 'fc_norm' in k): 
+                param_require_grad.append(k)
+            else:
+                v.requires_grad = False
+        print(f'Warning! these params require grad:\n{param_require_grad}')
 
     if args.eval:
 

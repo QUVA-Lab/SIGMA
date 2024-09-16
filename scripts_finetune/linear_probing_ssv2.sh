@@ -14,7 +14,7 @@ OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
     --finetune ${MODEL_PATH} \
     --log_dir ${OUTPUT_DIR} \
     --output_dir ${OUTPUT_DIR} \
-    --batch_size 4 \
+    --batch_size 24 \
     --num_sample 2 \
     --input_size 224 \
     --short_side_size 224 \

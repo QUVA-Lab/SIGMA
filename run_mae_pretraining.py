@@ -35,7 +35,7 @@ def get_args():
     parser.add_argument('--mask_type', default='tube', choices=['random', 'tube', 'parts', 'tube_fgbg'],
                         type=str, help='masked strategy of video tokens/patches')
 
-    parser.add_argument('--target_type', default='mlp', choices=['pixel', 'mlp', 'mlp_mha', 'dino_v1', 'dino_v2'],
+    parser.add_argument('--target_type', default='mlp', choices=['pixel', 'mlp', 'dino_v1', 'dino_v2'],
                             type=str, help='define target type for loss')
    
     parser.add_argument('--loss_func', default='L2', choices=['L2', 'SWAV'],
@@ -54,8 +54,6 @@ def get_args():
     parser.add_argument('--normlize_target', default=True, type=bool,
                         help='normalized the target patch pixels')
     
-    parser.add_argument('--chromatic_correction', default=False, type=bool, 
-                        help='normalized the target patch pixels')
     parser.add_argument('--gray_scale_prob', default=0.0, type=float, help='probability of gray scale')
 
     parser.add_argument('--kwindow', default=1, type=int, help='memory size for DPC')
@@ -343,8 +341,7 @@ def main(args):
             target_type=args.target_type,
             mask_type=args.mask_type,
             output_dir=args.output_dir,
-            loss_func=args.loss_func,
-                    chromatic_correction=args.chromatic_correction,)
+            loss_func=args.loss_func)
         if args.output_dir:
             if (epoch + 1) % args.save_ckpt_freq == 0 or epoch + 1 == args.epochs:
                 utils.save_model(

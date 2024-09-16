@@ -18,7 +18,7 @@ from utils import chromatic_correction_fct
 def train_one_epoch(model: torch.nn.Module, feature_extraction_model:torch.nn.Module, data_loader: Iterable, optimizer: torch.optim.Optimizer,
                     device: torch.device, epoch: int, loss_scaler, max_norm: float = 0, patch_size: int = 16, mask_type='tube',
                     target_type='pixel', normlize_target: bool = True, log_writer=None, lr_scheduler=None, start_steps=None,
-                    lr_schedule_values=None, wd_schedule_values=None, output_dir='./', loss_func='L2', chromatic_correction=False):
+                    lr_schedule_values=None, wd_schedule_values=None, output_dir='./', loss_func='L2'):
     model.train()
     metric_logger = utils.MetricLogger(delimiter="  ")
     metric_logger.add_meter('lr', utils.SmoothedValue(window_size=1, fmt='{value:.6f}'))
@@ -52,8 +52,6 @@ def train_one_epoch(model: torch.nn.Module, feature_extraction_model:torch.nn.Mo
                 std = torch.as_tensor(IMAGENET_DEFAULT_STD).to(device)[None, :, None, None, None]
                 unnorm_videos = videos * std + mean  # in [0, 1]
                 
-                if chromatic_correction:
-                    unnorm_videos = chromatic_correction_fct(unnorm_videos)
 
                 if normlize_target:
                     videos_squeeze = rearrange(unnorm_videos, 'b c (t p0) (h p1) (w p2) -> b (t h w) (p0 p1 p2) c', p0=2, p1=patch_size, p2=patch_size)
@@ -66,10 +64,8 @@ def train_one_epoch(model: torch.nn.Module, feature_extraction_model:torch.nn.Mo
 
                 B, _, C = videos_patch.shape
 
-                if 'mha' in target_type:
-                    labels = videos_patch
-                else:
-                    labels = videos_patch[bool_masked_pos].reshape(B, -1, C)
+                labels = videos_patch[bool_masked_pos].reshape(B, -1, C)
+                print("Target type is {}, ".format(target_type))
         
         elif 'dino' in target_type:
 
@@ -94,6 +90,7 @@ def train_one_epoch(model: torch.nn.Module, feature_extraction_model:torch.nn.Mo
                     labels = features_squeeze
                 B, _, C = labels.shape
                 labels = labels[bool_masked_pos].reshape(B, -1, C)
+                print("Target type is {}, ".format(target_type))
         
         with torch.cuda.amp.autocast():
             outputs, (scores1, q1), (scores2, q2) = model(videos, bool_masked_pos, labels)
@@ -109,8 +106,10 @@ def train_one_epoch(model: torch.nn.Module, feature_extraction_model:torch.nn.Mo
                 loss1 = loss_cpt(scores1.permute(0, 2, 1), q2.long())
                 loss2 = loss_cpt(scores2.permute(0, 2, 1), q1.long())
                 loss = loss1 + loss2
+                print("Loss  SAWV is {}, ".format(loss_func))
             else:
                 loss = loss_cpt(outputs, labels).mean()
+                print("Loss L2 is  {}, ".format(loss_func))
 
         loss_value = loss.item()
 

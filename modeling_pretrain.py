@@ -334,15 +334,6 @@ class PretrainVisionTransformer(nn.Module):
             self.head = nn.Identity()
         elif target_type == 'mlp':
             self.head = init_proj_mlp(1536)
-        elif 'mha' in target_type :
-            self.head = init_proj_mlp(1536)
-            self.mha = nn.MultiheadAttention(embed_dim=decoder_num_classes, num_heads=8, dropout=0.1, batch_first=True)
-            self.head2 = init_proj_mlp(decoder_num_classes)
-            self.key = nn.Linear(decoder_num_classes, decoder_num_classes)
-            self.value = nn.Linear(decoder_num_classes, decoder_num_classes)
-            self.query = nn.Linear(decoder_num_classes, decoder_num_classes)
-            self.attn_mask = torch.from_numpy(create_binary_kk_attention_mask_2d(grid_size=14, k=kwindow)).bool()
-            self.attn_mask = ~self.attn_mask
             
     def extract_assignments(self, projected_features, detach=False):
         bs, np, dim = projected_features.shape

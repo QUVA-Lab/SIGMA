@@ -1,10 +1,8 @@
 # Pre-training SIGMA 
 
-## Original Implementation
+The implementation of our SIGMA supports **single and multi-node distributed training**. We provide the **off-the-shelf** scripts in the [scripts_pretrain](./scripts_pretrain).
 
-The implementation of our SIGMA supports **Single and multi-node distributed training**. We provide the **off-the-shelf** scripts in the [scripts_pretrain](./scripts_pretrain).
-
--  For example, to pre-train SIGMA ViT-Base on **Something-Something V2** with 8 GPUs (1 nodes x 8 GPUs), you can run
+-  For example, to pre-train SIGMA ViT-Base on **Something-Something V2** on a single node with 8 GPUs (1 nodes x 8 GPUs), you can run
 
   ```bash
          DATA_PATH="/ssdstore/fmthoker/20bn-something-something-v2/something-something-v2-videos_avi/"
@@ -46,7 +44,7 @@ The implementation of our SIGMA supports **Single and multi-node distributed tra
 
 ## Slurm
 
-To help the community to reproduce our results on slurm cluster, we also provide the the **off-the-shelf** script. 
+To help the community to reproduce our results on slurm cluster, We provide the **off-the-shelf** scripts in the [scripts_pretrain](./scripts_pretrain).
 
 -  For example, to pre-train SIGMA ViT-Base on **Something-Something V2** with 16 GPUs (4 nodes x 4 GPUs), you can run
 
@@ -65,7 +63,7 @@ To help the community to reproduce our results on slurm cluster, we also provide
           OUTPUT_DIR='/ivi/zfs/s0/original_homes/fthoker/runs/VITB_SSV2_Test/'
           
           JOB_NAME=$1
-          # 8 for 1 node, 16 for 2 node, etc.
+          # 4 for 1 node, 16 for 4 node, etc.
           GPUS=${GPUS:-16}
           GPUS_PER_NODE=${GPUS_PER_NODE:-4}
           CPUS_PER_TASK=${CPUS_PER_TASK:-4}

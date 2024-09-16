@@ -2,7 +2,7 @@
 
 ## Original Implementation
 
-The implementation of our SIGMA supports **multi-node distributed training**. We provide the **off-the-shelf** scripts in the [scripts folder](scripts).
+The implementation of our SIGMA supports **multi-node distributed training**. We provide the **off-the-shelf** scripts in the [scripts_pretrain](./scripts_pretrain).
 
 -  For example, to pre-train SIGMA ViT-Base on **Something-Something V2** with 64 GPUs (8 nodes x 8 GPUs), you can run
 

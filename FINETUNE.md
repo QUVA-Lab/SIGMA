@@ -8,7 +8,7 @@ We provide the **off-the-shelf** scripts in the [scripts_finetune](scripts_finet
           DATA_PATH='Your_Path/20bn-something-something-v2/something-something-v2-annotations/'
           # Set the path to save checkpoints
           MODEL_PATH='Your_Path/sigma_final_models/pretrain/ssv2/ssv2_vit_b_sigma_with_dino.pth'
-          OUTPUT_DIR='Output_path/finetune_ssv2_pretrained_with_ssv2_vit_b_sigma_with_dino/eval_lr_1e-3_epoch_40_8gpus_no_update_freq/log.txt'
+          OUTPUT_DIR='Output_Path/finetune_ssv2_pretrained_with_ssv2_vit_b_sigma_with_dino/eval_lr_1e-3_epoch_40_8gpus_no_update_freq/log.txt'
           
           OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
               --master_port 12320  run_class_finetuning.py \

@@ -8,7 +8,7 @@ The implementation of our SIGMA supports **single and multi-node distributed tra
          DATA_PATH="Your_Path/20bn-something-something-v2/something-something-v2-videos_avi/"
          DATA_PATH_CSV='Your_Path/20bn-something-something-v2/something-something-v2-annotations/train.csv'
          
-         OUTPUT_DIR='Output_path/VITB_SSV2_Pretraining_Dino_single_node/'
+         OUTPUT_DIR='Output_Path/VITB_SSV2_Pretraining_Dino_single_node/'
          
          OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
                  --master_port 12312 run_mae_pretraining.py \
@@ -60,7 +60,7 @@ To help the community to reproduce our results on slurm cluster, We provide the 
          DATA_PATH="Your_Path/20bn-something-something-v2/something-something-v2-videos_avi/"
          DATA_PATH_CSV='Your_Path/20bn-something-something-v2/something-something-v2-annotations/train.csv'
          
-         OUTPUT_DIR='Output_path/VITB_SSV2_Pretraining_Dino_multi_node/'
+         OUTPUT_DIR='Output_Path/VITB_SSV2_Pretraining_Dino_multi_node/'
           
           JOB_NAME=$1
           # 4 for 1 node, 16 for 4 node, etc.

@@ -1,7 +1,7 @@
-DATA_PATH="/ssdstore/fmthoker/20bn-something-something-v2/something-something-v2-videos_avi/"
-DATA_PATH_CSV='/ssdstore/fmthoker/20bn-something-something-v2/something-something-v2-annotations/train.csv'
+DATA_PATH="Your_Path/20bn-something-something-v2/something-something-v2-videos_avi/"
+DATA_PATH_CSV='Your_Path/20bn-something-something-v2/something-something-v2-annotations/train.csv'
 
-OUTPUT_DIR='/ivi/zfs/s0/original_homes/fthoker/runs/VITB_SSV2_Test/'
+OUTPUT_DIR='Output_path/VITB_SSV2_Pretraining_Dino_single_node/'
 
 OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
         --master_port 12312 run_mae_pretraining.py \

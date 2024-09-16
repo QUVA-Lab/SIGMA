@@ -20,7 +20,7 @@ source activate fgvssl
 DATA_PATH="/ssdstore/fmthoker/20bn-something-something-v2/something-something-v2-videos_avi/"
 DATA_PATH_CSV='/ssdstore/fmthoker/20bn-something-something-v2/something-something-v2-annotations/train.csv'
 
-OUTPUT_DIR='/ivi/zfs/s0/original_homes/fthoker/runs/VITB_SSV2_Test/'
+         OUTPUT_DIR='Output_Path/VITB_SSV2_Pretraining_Dino_multi_node/'
 
 JOB_NAME=$1
 # 8 for 1 node, 16 for 2 node, etc.

@@ -44,6 +44,11 @@ class VideoClsDataset(Dataset):
                 self.rand_erase = True
         if VideoReader is None:
             raise ImportError("Unable to import `decord` which is required to read videos.")
+        if 'Kinetics-400' in args.data_set:
+                import pandas as pd
+                cleaned = pd.read_csv(self.anno_path, header=None, delimiter=' ')
+                self.dataset_samples = list(cleaned.values[:, 0])
+                self.label_array = list(cleaned.values[:, 1])
 
         if 'UCF' in args.data_set:
                 #import pandas as pd

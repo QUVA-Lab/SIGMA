@@ -3,7 +3,7 @@
   ```bash
 # create env
 conda env create -f sigma_env.yml
-# activate env
+# activate
 conda activate sigma_env
 
   ```

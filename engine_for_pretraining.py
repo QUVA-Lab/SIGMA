@@ -106,10 +106,10 @@ def train_one_epoch(model: torch.nn.Module, feature_extraction_model:torch.nn.Mo
                 loss1 = loss_cpt(scores1.permute(0, 2, 1), q2.long())
                 loss2 = loss_cpt(scores2.permute(0, 2, 1), q1.long())
                 loss = loss1 + loss2
-                print("Loss  SAWV is {}, ".format(loss_func))
+                #print("Loss  SAWV is {}, ".format(loss_func))
             else:
                 loss = loss_cpt(outputs, labels).mean()
-                print("Loss L2 is  {}, ".format(loss_func))
+                #print("Loss L2 is  {}, ".format(loss_func))
 
         loss_value = loss.item()
 

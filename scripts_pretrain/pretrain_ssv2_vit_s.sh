@@ -2,7 +2,7 @@
 DATA_PATH="Your_Path/20bn-something-something-v2/something-something-v2-videos_avi/"
 DATA_PATH_CSV='Your_Path/20bn-something-something-v2/something-something-v2-annotations/train.csv'
 
-OUTPUT_DIR='Output_Path/runs/VITS_SSV2_DINO/'
+OUTPUT_DIR='Output_Path/runs/VITS_SSV2_Pretraining_DINO/'
 
 OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
         --master_port 12312 run_mae_pretraining.py \
@@ -12,7 +12,7 @@ OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
         --target_type  dino_v1 \
         --loss_func SWAV \
         --distillation_teacher dino_b \
-        --run_name VITS_MGMAE_SSV2_MINI_L2 \
+        --run_name VITS_SSV2_Pretraining_DINO \
         --mask_ratio 0.9 \
         --model pretrain_videomae_small_patch16_224 \
         --decoder_depth 4 \

@@ -530,11 +530,12 @@ class VideoMAE(torch.utils.data.Dataset):
                     # So we need to provide extension (i.e., .mp4) to complete the file name.
                     video_name = '{}.{}'.format(directory, self.video_ext)
                 
-                parts = video_name.split('/')
-                path = self.root+ parts[-1]	
+                #parts = video_name.split('/')
+                #path = self.root+ parts[-1]	
                 # path = self.root + parts[-2] + '/' + parts[-1]	
                 # print(parts, self.root, path)
-                video_name = video_name.split('/')[-1] # get ride of absolute path in csv file #'19934.avi'#
+                #video_name = video_name.split('/')[-1] # get ride of absolute path in csv file #'19934.avi'#
+                path = video_name	
                 decord_vr = decord.VideoReader(path, num_threads=1)
                 duration = len(decord_vr)
                 #print("path", path)

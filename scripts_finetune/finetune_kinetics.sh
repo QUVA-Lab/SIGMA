@@ -2,7 +2,7 @@
 DATA_PATH='/ssdstore/fmthoker/kinetics/labels/'
 # Set the path to save checkpoints
 MODEL_PATH='/ivi/zfs/s0/original_homes/fthoker/sigma_final_models/pretrain/kinetics-400/kinetics_400_vit_b_sigma_with_dino.pth'
-OUTPUT_DIR='expirements_finetune/finetune_kinetics-400_pretrained_with_kinetics_400_vit_b_sigma_with_dino/eval_lr_1e-3_epoch_40_8gpus_no_update_freq/log.txt'
+OUTPUT_DIR='expirements_finetune/finetune_kinetics-400_pretrained_with_kinetics_400_vit_b_sigma_with_dino/eval_lr_1e-3_epoch_75/log.txt'
 
 OMP_NUM_THREADS=1 python -m torch.distributed.launch --nproc_per_node=8 \
         --master_port 12320  run_class_finetuning.py \

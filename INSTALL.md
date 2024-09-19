@@ -1,9 +1,9 @@
 # SIGMA Installation
 
   ```bash
-# create
+# create env
 conda env create -f sigma_env.yml
-# activate
+# activate env
 conda activate sigma_env
 
   ```

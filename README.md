@@ -2,7 +2,7 @@
 
 [![arXiv](https://img.shields.io/badge/cs.CV-2407.15447-b31b1b?logo=arxiv&logoColor=red)](https://arxiv.org/html/2407.15447v1)
 [![Hugging Face Models](https://img.shields.io/badge/%F0%9F%A4%97%20Models-SIGMA-blue)](https://huggingface.co/SMSD75/SIGMA) 
-[![Static Badge](https://img.shields.io/badge/website-SIGMA-8A2BE2)](https://daniel-cores.github.io/tvbench/](https://quva-lab.github.io/SIGMA/))
+[![Static Badge](https://img.shields.io/badge/website-SIGMA-8A2BE2)](https://quva-lab.github.io/SIGMA/](https://quva-lab.github.io/SIGMA/))
 
 ![SIGMA Framework](figs/method.jpg)
 

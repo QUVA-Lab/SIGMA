@@ -112,7 +112,7 @@ Please follow the instructions in [DATASET.md](DATASET.md) for data preparation.
 ## 🔄 Pre-training
 
 The pre-training instruction is in [PRETRAIN.md](PRETRAIN.md).
-You can find our models on Huggingface(https://huggingface.co/SMSD75/SIGMA)
+You can find our models on Huggingface (https://huggingface.co/SMSD75/SIGMA), including both the pretrained and **finetuned** versions.
 
 ## ⤴️ Fine-tuning with pre-trained models
 
